@@ -209,19 +209,20 @@ class PersonImageClassifier:
                 messagebox.showwarning("Warning", "No faces detected in this image")
                 return
                 
-            if len(face_locations) == 1:
-                # Only one face, use it
-                face_crop = face_crops[0]
-                landmarks = self.extract_face_landmarks(face_crop)
-                if landmarks is not None:
-                    self.target_person_landmarks = landmarks
-                    self.target_person_face_crop = face_crop
-                    messagebox.showinfo("Success", "Person selected successfully!")
-                else:
-                    messagebox.showerror("Error", "Could not extract facial features from the selected face")
-            else:
-                # Multiple faces, let user choose
-                self.choose_face_from_multiple(face_locations, face_crops)
+            # if len(face_locations) == 1:
+            #     # Only one face, use it
+            #     face_crop = face_crops[0]
+            #     landmarks = self.extract_face_landmarks(face_crop)
+            #     if landmarks is not None:
+            #         self.target_person_landmarks = landmarks
+            #         self.target_person_face_crop = face_crop
+            #         messagebox.showinfo("Success", "Person selected successfully!")
+            #     else:
+            #         messagebox.showerror("Error", "Could not extract facial features from the selected face")
+            # else:
+            #     # Multiple faces, let user choose
+            #     self.choose_face_from_multiple(face_locations, face_crops)    
+            self.choose_face_from_multiple(face_locations, face_crops)
                 
         except Exception as e:
             messagebox.showerror("Error", f"Could not process image: {e}")
